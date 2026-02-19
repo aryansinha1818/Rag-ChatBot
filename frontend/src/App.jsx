@@ -18,11 +18,14 @@ function App() {
     const userMessage = { sender: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
     setLoading(true);
-
+    //http://localhost:8000/api/chat
     try {
-      const res = await axios.post("http://localhost:8000/api/chat", {
-        message: input,
-      });
+      const res = await axios.post(
+        "https://rag-chatbot-k78l.onrender.com/api/chat",
+        {
+          message: input,
+        },
+      );
 
       const botMessage = { sender: "bot", text: res.data.answer };
       setMessages((prev) => [...prev, botMessage]);
